@@ -50,7 +50,6 @@ struct ContentView: View {
             deck.append(newCard)
             generatedLog.append(numberSuitString)
             
-//            let cardName = getCardName(newCard.number)
             let suitName = suits[newCard.suit]
             let cardName = getCardName(newCard.number)
             
@@ -60,7 +59,19 @@ struct ContentView: View {
     
     
     func drawCard() {
-        
+        if deck.count == 0 {
+            message = "No cards in the deck"
+        }
+        else {
+            let randIndex = Int.random(in: 0...deck.count-1)
+//            let randomCard = deck.randomElement()
+            let randomCard = deck[randIndex]
+            
+            let cardName = getCardName(randomCard.number)
+            let suitName = suits[randomCard.suit]
+            
+            message = "Drew a \(cardName) of \(suitName)"
+        }
     }
     
     
